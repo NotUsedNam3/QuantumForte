@@ -46,22 +46,22 @@ def refresh():
     for widget in summary_frame.winfo_children():
         widget.destroy()
 
-    tk.Label(summary_frame, text="Total", font=("Arial", 14, "bold"), bg="lightgray").grid(row=0, column=2, columnspan=3, sticky="W", pady=10)
-    tk.Label(summary_frame, text=f"{total_processes[0]} %", font=("Arial", 14), bg="lightgray").grid(row=0, column=5, columnspan=3, sticky="E", pady=10)
-    tk.Label(summary_frame, text=f"{total_processes[1]} GB", font=("Arial", 14), bg="lightgray").grid(row=0, column=8, columnspan=3, sticky="E", pady=10)
-    tk.Label(summary_frame, text=f"{total_processes[2]} GB", font=("Arial", 14), bg="lightgray").grid(row=0, column=11, columnspan=3, sticky="E", padx=(0, 10), pady=10)
+    tk.Label(summary_frame, text="Total", font=("Arial", 13, "bold"), bg="lightgray").grid(row=0, column=2, columnspan=3, sticky="W", pady=10)
+    tk.Label(summary_frame, text=f"{total_processes[0]} %", font=("Arial", 13), bg="lightgray").grid(row=0, column=5, columnspan=3, sticky="E", pady=10)
+    tk.Label(summary_frame, text=f"{total_processes[1]} GB", font=("Arial", 13), bg="lightgray").grid(row=0, column=8, columnspan=3, sticky="E", pady=10)
+    tk.Label(summary_frame, text=f"{total_processes[2]} GB", font=("Arial", 13), bg="lightgray").grid(row=0, column=11, columnspan=3, sticky="E", padx=(0, 10), pady=10)
 
 
     for widget in processes_frame.winfo_children():
         widget.destroy()
 
     i = 0
-    for proc in processes[:21]:
-        tk.Label(processes_frame, text=i + 1, font=("Arial", 14), bg="lightgray").grid(row=i, column=0, columnspan=2, sticky="W", padx=(10, 0))
-        tk.Label(processes_frame, text=proc[0], font=("Arial", 14), bg="lightgray").grid(row=i, column=2, columnspan=3, sticky="W")
-        tk.Label(processes_frame, text=f"{proc[1]} %", font=("Arial", 14), bg="lightgray").grid(row=i, column=5, columnspan=3, sticky="E")
-        tk.Label(processes_frame, text=f"{proc[2]} MB", font=("Arial", 14), bg="lightgray").grid(row=i, column=8, columnspan=3, sticky="E")
-        tk.Label(processes_frame, text=f"{proc[3]} MB", font=("Arial", 14), bg="lightgray").grid(row=i, column=11, columnspan=3, sticky="E", padx=(0, 10))
+    for proc in processes[:20]:
+        tk.Label(processes_frame, text=i + 1, font=("Arial", 13), bg="lightgray").grid(row=i, column=0, columnspan=2, sticky="W", padx=(10, 0))
+        tk.Label(processes_frame, text=proc[0], font=("Arial", 13), bg="lightgray").grid(row=i, column=2, columnspan=3, sticky="W")
+        tk.Label(processes_frame, text=f"{proc[1]} %", font=("Arial", 13), bg="lightgray").grid(row=i, column=5, columnspan=3, sticky="E")
+        tk.Label(processes_frame, text=f"{proc[2]} MB", font=("Arial", 13), bg="lightgray").grid(row=i, column=8, columnspan=3, sticky="E")
+        tk.Label(processes_frame, text=f"{proc[3]} MB", font=("Arial", 13), bg="lightgray").grid(row=i, column=11, columnspan=3, sticky="E", padx=(0, 10))
         i += 1
 
 
@@ -70,6 +70,8 @@ def refresh():
 
 root = tk.Tk()
 root.title("QuantumForte")
+root.state("zoomed")
+"""
 window_width = 1380
 window_height = 860
 screen_width = root.winfo_screenwidth()
@@ -77,6 +79,7 @@ screen_height = root.winfo_screenheight()
 center_x = int(screen_width/2 - window_width / 2)
 center_y = int(screen_height/2 - window_height / 2)
 root.geometry(f"{window_width}x{window_height}+{center_x}+{center_y}")
+"""
 root.resizable(False, False)
 root.iconbitmap("./assets/QFLogo.ico")
 
@@ -182,19 +185,19 @@ cpu_frequency = round(psutil.cpu_freq().current / 1000, 2)
 real_cores = psutil.cpu_count(logical=False)
 logical_cores = psutil.cpu_count(logical=True)
 
-cpu_props_total = tk.Label(cpu_frame, text=f"Auslastung: {total_processes[0]} %", font=("Arial", 14), bg="lightgray")
+cpu_props_total = tk.Label(cpu_frame, text=f"Auslastung: {total_processes[0]} %", font=("Arial", 13), bg="lightgray")
 cpu_props_total.pack(side="top", anchor="nw", padx=10, pady=(10, 0))
 
-cpu_props_count = tk.Label(cpu_frame, text=f"Anzahl Prozesse: {processes_count}", font=("Arial", 14), bg="lightgray")
+cpu_props_count = tk.Label(cpu_frame, text=f"Anzahl Prozesse: {processes_count}", font=("Arial", 13), bg="lightgray")
 cpu_props_count.pack(side="top", anchor="nw", padx=10)
 
-cpu_props_freq = tk.Label(cpu_frame, text=f"Frequenz: {cpu_frequency} GHz", font=("Arial", 14), bg="lightgray")
+cpu_props_freq = tk.Label(cpu_frame, text=f"Frequenz: {cpu_frequency} GHz", font=("Arial", 13), bg="lightgray")
 cpu_props_freq.pack(side="top", anchor="nw", padx=10)
 
-cpu_props_real = tk.Label(cpu_frame, text=f"Echte Kerne: {real_cores}", font=("Arial", 14), bg="lightgray")
+cpu_props_real = tk.Label(cpu_frame, text=f"Echte Kerne: {real_cores}", font=("Arial", 13), bg="lightgray")
 cpu_props_real.pack(side="top", anchor="nw", padx=10)
 
-cpu_props_log = tk.Label(cpu_frame, text=f"Logische Kerne: {logical_cores}", font=("Arial", 14), bg="lightgray")
+cpu_props_log = tk.Label(cpu_frame, text=f"Logische Kerne: {logical_cores}", font=("Arial", 13), bg="lightgray")
 cpu_props_log.pack(side="top", anchor="nw", padx=10, pady=(0, 10))
 
 
@@ -211,21 +214,22 @@ ram_gb = round(psutil.virtual_memory().total / (1024**3), 1)
 ram_usage_percent = psutil.virtual_memory().percent
 ram_available_mb = round(psutil.virtual_memory().available / (1024**3), 1)
 
-ram_props_total = tk.Label(ram_frame, text=f"Total Arbeitsspeicher: {ram_gb} GB", font=("Arial", 14), bg="lightgray")
+ram_props_total = tk.Label(ram_frame, text=f"Total Arbeitsspeicher: {ram_gb} GB", font=("Arial", 13), bg="lightgray")
 ram_props_total.pack(side="top", anchor="nw", padx=10, pady=(10, 0))
 
-ram_props_usage = tk.Label(ram_frame, text=f"In Verwendung (GB): {total_processes[1]} GB", font=("Arial", 14), bg="lightgray")
+ram_props_usage = tk.Label(ram_frame, text=f"In Verwendung (GB): {total_processes[1]} GB", font=("Arial", 13), bg="lightgray")
 ram_props_usage.pack(side="top", anchor="nw", padx=10)
 
-ram_props_freq = tk.Label(ram_frame, text=f"In Verwendung (%): {ram_usage_percent} %", font=("Arial", 14), bg="lightgray")
+ram_props_freq = tk.Label(ram_frame, text=f"In Verwendung (%): {ram_usage_percent} %", font=("Arial", 13), bg="lightgray")
 ram_props_freq.pack(side="top", anchor="nw", padx=10)
 
-ram_props_free = tk.Label(ram_frame, text=f"Zur Verfügung: {ram_available_mb} GB", font=("Arial", 14), bg="lightgray")
-ram_props_free.pack(side="top", anchor="nw", padx=10)
+ram_props_free = tk.Label(ram_frame, text=f"Zur Verfügung: {ram_available_mb} GB", font=("Arial", 13), bg="lightgray")
+ram_props_free.pack(side="top", anchor="nw", padx=10, pady=(0, 10))
 
-ram_props_placeholer = tk.Label(ram_frame, text="", font=("Arial", 14), bg="lightgray")
+"""
+ram_props_placeholer = tk.Label(ram_frame, text="", font=("Arial", 13), bg="lightgray")
 ram_props_placeholer.pack(side="top", anchor="nw", padx=10, pady=(0, 10))
-
+"""
 
 ssd_frame = tk.Frame(content_right, bg="lightgray", relief="solid", bd=2)
 ssd_frame.pack(side="top", anchor="nw", fill="x", padx=10, pady=(10,0))
@@ -236,27 +240,21 @@ ssd_titel_label.pack(side="top", anchor="nw", padx=10, pady=10)
 right_line = tk.Frame(ssd_frame, bg="#000000", height=2)
 right_line.pack(side="top", fill="x")
 
-ssd_total_gb = round(psutil.disk_usage('C:\\').total / (1024**4), 1)
-ssd_used_gb = round(psutil.disk_usage('C:\\').used / (1024**4), 1)
-io = psutil.disk_io_counters()
-ssd_read = round(io.read_bytes / (1024**3), 2)
-ssd_write = round(io.write_bytes / (1024**3), 2)
+ssd_total_tb = round(psutil.disk_usage('C:\\').total / (1024**4), 1)
+ssd_used_tb = round(psutil.disk_usage('C:\\').used / (1024**4), 1)
+ssd_free_tb = round(ssd_total_tb - ssd_used_tb, 1)
 
-ssd_props_all = tk.Label(ssd_frame, text=f"Total R/W (seit Boot): {total_processes[2]} GB", font=("Arial", 14), bg="lightgray")
+ssd_props_all = tk.Label(ssd_frame, text=f"Total R/W (seit Boot): {total_processes[2]} GB", font=("Arial", 13), bg="lightgray")
 ssd_props_all.pack(side="top", anchor="nw", padx=10, pady=(10, 0))
 
-ssd_props_read = tk.Label(ssd_frame, text=f"Gelesen (seit Boot): {ssd_read} GB", font=("Arial", 14), bg="lightgray")
-ssd_props_read.pack(side="top", anchor="nw", padx=10)
-
-ssd_props_write = tk.Label(ssd_frame, text=f"Geschrieben (seit Boot): {ssd_write} GB", font=("Arial", 14), bg="lightgray")
-ssd_props_write.pack(side="top", anchor="nw", padx=10)
-
-ssd_props_total = tk.Label(ssd_frame, text=f"Grösse: {ssd_total_gb} TB", font=("Arial", 14), bg="lightgray")
+ssd_props_total = tk.Label(ssd_frame, text=f"Grösse: {ssd_total_tb} TB", font=("Arial", 13), bg="lightgray")
 ssd_props_total.pack(side="top", anchor="nw", padx=10)
 
-ssd_props_used = tk.Label(ssd_frame, text=f"Belegt: {ssd_used_gb} TB", font=("Arial", 14), bg="lightgray")
-ssd_props_used.pack(side="top", anchor="nw", padx=10, pady=(0, 10))
+ssd_props_used = tk.Label(ssd_frame, text=f"Belegt: {ssd_used_tb} TB", font=("Arial", 13), bg="lightgray")
+ssd_props_used.pack(side="top", anchor="nw", padx=10)
 
+ssd_props_used = tk.Label(ssd_frame, text=f"Frei: {ssd_free_tb} TB", font=("Arial", 13), bg="lightgray")
+ssd_props_used.pack(side="top", anchor="nw", padx=10, pady=(0, 10))
 
 refresh()
 root.mainloop()
