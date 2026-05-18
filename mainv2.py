@@ -222,7 +222,7 @@ logo_label.pack(side="left", padx=10, pady=10)
 title_label = tk.Label(top_bar, text="QuantumForte", font=("Impact", 60), bg="#F5F5F5")
 title_label.pack(side="left", padx=(10, 0))
 
-color_frame = tk.Frame(top_bar, bg="F5F5F5")
+color_frame = tk.Frame(top_bar, bg="#F5F5F5")
 color_frame.pack(side="right")
 
 color_frame_top = tk.Frame(color_frame, bg="#F5F5F5")
