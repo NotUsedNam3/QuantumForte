@@ -188,7 +188,7 @@ letter_icon = tk.PhotoImage(file="./assets/letter.png")
 cpu_icon = tk.PhotoImage(file="./assets/CPU.png")
 ram_icon = tk.PhotoImage(file="./assets/RAM.png")
 ssd_icon = tk.PhotoImage(file="./assets/SSD.png")
-numer_icon = tk.PhotoImage(file="./assets/hashtag.png")
+number_icon = tk.PhotoImage(file="./assets/hashtag.png")
 process_icon = tk.PhotoImage(file="./assets/process_name.png")
 
 
@@ -282,7 +282,7 @@ ssd_button = tk.Button(sidebar, image=ssd_icon, command=sort_ssd, bg="#9EADE5")
 ssd_button.pack(side="top", padx=10, pady=(10, 0))
 
 #Die Titel (Nr., Namen, CPU, RAM, SSD) für die Prozesse im Grid angeordnet
-tk.Label(header_frame, image=numer_icon, text="Nr. ", compound="right", font=("Arial", 14, "bold"), bg="#F5F5F5").grid(row=0, column=0, columnspan=2, sticky="W", padx=(10, 0), pady=10)
+tk.Label(header_frame, image=number_icon, text="Nr. ", compound="right", font=("Arial", 14, "bold"), bg="#F5F5F5").grid(row=0, column=0, columnspan=2, sticky="W", padx=(10, 0), pady=10)
 tk.Label(header_frame, image=process_icon, text="Prozess ", compound="right", font=("Arial", 14, "bold"), bg="#C2C2C2").grid(row=0, column=2, columnspan=4, sticky="W", pady=10)
 tk.Label(header_frame, image=cpu_icon, text="CPU ", compound="right", font=("Arial", 14, "bold"), bg="#B8AFD5").grid(row=0, column=6, columnspan=3, sticky="E", pady=10)
 tk.Label(header_frame, image=ram_icon, text="RAM ", compound="right", font=("Arial", 14, "bold"), bg="#C0D5AF").grid(row=0, column=9, columnspan=3, sticky="E", pady=10)
