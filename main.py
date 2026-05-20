@@ -163,8 +163,10 @@ def refresh():
 root = tk.Tk()
 root.title("QuantumForte")  #Namen des Fensters
 root.configure(bg="#F5F5F5")    #Farbe des Fensters
+root.iconbitmap("./assets/QFLogo.ico")
 screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()
+
 
 #Schaut die Grösse des Bildschirms an. Ab einer gewissen Grösse wird es im Fenster Modus geöffnet
 if screen_width > 1920 and screen_height > 1080:
@@ -174,7 +176,6 @@ if screen_width > 1920 and screen_height > 1080:
     center_y = int(screen_height / 2 - window_height / 2)
     root.geometry(f"{window_width}x{window_height}+{center_x}+{center_y}")
     root.resizable(False, False)
-    root.iconbitmap("./assets/QFLogo.ico")
 else:
     root.state("zoomed")
 
